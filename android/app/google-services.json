@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "145675979158",
+    "project_id": "getx-example-6122a",
+    "storage_bucket": "getx-example-6122a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145675979158:android:c3304bd0fe7677b75a35b7",
+        "android_client_info": {
+          "package_name": "com.getx.example.firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmaD90Cl4_ajx6zKwFujEA9HfBzSbwtik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
