@@ -63,7 +63,7 @@ class UserappView extends GetView<UserappController> {
       ),
       body: Center(
           child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const Padding(
             padding: EdgeInsets.all(15.0),
@@ -96,20 +96,22 @@ class UserappView extends GetView<UserappController> {
           const SizedBox(
             height: 40,
           ),
-          Expanded(
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(25),
-                      topRight: Radius.circular(25))),
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 30),
-                    TextField(
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height*.3,
+            decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(25),
+                    topRight: Radius.circular(25))),
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                children: [
+                  SizedBox(height: MediaQuery.of(context).size.height*.01,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height*.07,
+                    child: TextField(
                       controller: con.emailCon,
                       decoration: InputDecoration(
                         hintText: "Email",
@@ -122,10 +124,13 @@ class UserappView extends GetView<UserappController> {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    TextField(
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height*.07,
+                    child: TextField(
                       controller: con.passCon,
                       obscureText: true,
                       decoration: InputDecoration(
@@ -139,29 +144,27 @@ class UserappView extends GetView<UserappController> {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text("Don't have account? "),
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(RegisterView());
-                          },
-                          child: const Text(
-                            "Click here",
-                            style: TextStyle(color: Colors.blue),
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Don't have account? "),
+                      GestureDetector(
+                        onTap: () {
+                          Get.to(RegisterView());
+                        },
+                        child: const Text(
+                          "Click here",
+                          style: TextStyle(color: Colors.blue),
+                        ),
+                      )
+                    ],
+                  )
+                ],
               ),
             ),
           ),
