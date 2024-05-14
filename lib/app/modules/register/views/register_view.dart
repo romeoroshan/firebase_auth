@@ -1,27 +1,28 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:firebase/app/modules/register/views/register_view.dart';
+import 'package:firebase/app/modules/register/controllers/register_controller.dart';
+import 'package:firebase/app/modules/userapp/views/userapp_view.dart';
 import 'package:firebase/app/views/views/appbar_view.dart';
 import 'package:firebase/app/views/views/centerwidget_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/userapp_controller.dart';
-
-class UserappView extends GetView<UserappController> {
-  UserappController con = UserappController();
-
-  UserappView({Key? key}) : super(key: key);
+class RegisterView extends GetView {
+  RegisterController con = RegisterController();
+  RegisterView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 58, 33, 243),
         onPressed: () {
-          con.login(con.emailCon.text, con.passCon.text);
+          con.register(con.emailCon1.text, con.passCon1.text);
         },
-        child: const Icon(Icons.arrow_right,color: Colors.white,),
+        child: const Icon(
+          Icons.person_add,
+          color: Colors.white,
+        ),
       ),
       backgroundColor: const Color.fromARGB(255, 58, 33, 243),
       appBar: const PreferredSize(
@@ -34,7 +35,7 @@ class UserappView extends GetView<UserappController> {
         children: [
           const Padding(
             padding: EdgeInsets.all(15.0),
-            child: CenterwidgetView(title: "Welcome back",)
+            child: CenterwidgetView(title:"Register Here")
           ),
           const SizedBox(
             height: 40,
@@ -56,7 +57,7 @@ class UserappView extends GetView<UserappController> {
             SizedBox(
               height: MediaQuery.of(context).size.height * .07,
               child: TextField(
-                controller: con.emailCon,
+                controller: con.emailCon1,
                 decoration: InputDecoration(
                   hintText: "Email",
                   hintStyle: const TextStyle(
@@ -74,7 +75,7 @@ class UserappView extends GetView<UserappController> {
             SizedBox(
               height: MediaQuery.of(context).size.height * .07,
               child: TextField(
-                controller: con.passCon,
+                controller: con.passCon1,
                 obscureText: true,
                 decoration: InputDecoration(
                   hintText: "Password",
@@ -96,7 +97,7 @@ class UserappView extends GetView<UserappController> {
                 const Text("Don't have account? "),
                 GestureDetector(
                   onTap: () {
-                    Get.to(RegisterView());
+                    Get.to(UserappView());
                   },
                   child: const Text(
                     "Click here",

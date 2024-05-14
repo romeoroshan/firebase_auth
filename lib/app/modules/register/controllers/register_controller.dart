@@ -6,11 +6,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class UserappController extends GetxController {
+class RegisterController extends GetxController {
   late Rx<User?> _user;
   FirebaseAuth auth = FirebaseAuth.instance;
-  var emailCon = TextEditingController();
-  var passCon = TextEditingController();
+  var emailCon1 = TextEditingController();
+  var passCon1 = TextEditingController();
 
   @override
   void onInit() {
@@ -34,21 +34,29 @@ class UserappController extends GetxController {
       Get.offAll(WelcomeView());
     }
   }
-  void login(String email, String password) async {
-    try {
-      await auth.signInWithEmailAndPassword(email: email, password: password);
-      Get.offAll(WelcomeView());
 
+  void register(String email, String password) async {
+    print("function called");
+    print(email);
+    try {
+      await auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      Get.offAll(WelcomeView());
     } catch (e) {
-      Get.snackbar(
-        "User",
-        "message",
-        snackPosition: SnackPosition.BOTTOM,
-        titleText: const Text("Login failed"),
-        messageText: Text(e.toString()),
-      );
+      Get.snackbar("User", "message",
+          backgroundColor: Colors.red,
+          snackPosition: SnackPosition.BOTTOM,
+          titleText: const Text(
+            "Account creation failed",
+            style: TextStyle(color: Colors.white),
+          ),
+          messageText: Text(
+            e.toString(),
+            style: const TextStyle(color: Colors.white),
+          ));
     }
   }
+
 
   void logout() async {
     await auth.signOut();
